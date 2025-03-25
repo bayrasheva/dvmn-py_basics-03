@@ -7,8 +7,8 @@ load_dotenv()
 MY_LOGIN_YANDEX = os.getenv('MY_LOGIN_YANDEX')
 MY_PASSWORD_YANDEX = os.getenv('MY_PASSWORD_YANDEX')
 
-from_mail = 'angelina33520@yandex.ru'
-to_mail = 'angelina33520@yandex.ru'
+sender_email = 'angelina33520@yandex.ru'
+recipient_email = 'angelina33520@yandex.ru'
 subject = 'Приглашение!'
 website = 'https://dvmn.org/profession-ref-program/angelina1906/LAwcI/'
 friend_name = 'Аня'
@@ -34,7 +34,7 @@ Content-Type: text/plain; charset="UTF-8";
 Все проекты — они же решение наших задачек — можно разместить на твоём GitHub. Работодатели такое оценят. 
 
 Регистрируйся → %website%  
-На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл.'''.format(from_mail, to_mail, subject)
+На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл.'''.format(sender_email, recipient_email, subject)
 letter = letter.replace('%website%', website)
 letter = letter.replace('%friend_name%', friend_name)
 letter = letter.replace('%my_name%', my_name)
@@ -42,5 +42,5 @@ letter = letter.encode("UTF-8")
 
 server = smtplib.SMTP_SSL('smtp.yandex.ru', 465)
 server.login(MY_LOGIN_YANDEX, MY_PASSWORD_YANDEX)
-server.sendmail('angelina33520@yandex.ru', 'angelina33520@yandex.ru', letter)
+server.sendmail(sender_email, recipient_email, letter)
 server.quit()
