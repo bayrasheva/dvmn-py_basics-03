@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MY_LOGIN_YANDEX = os.getenv('MY_LOGIN_YANDEX')
-MY_PASSWORD_YANDEX = os.getenv('MY_PASSWORD_YANDEX')
+my_login_yandex = os.getenv('MY_LOGIN_YANDEX')
+my_password_yandex = os.getenv('MY_PASSWORD_YANDEX')
 
 sender_email = 'angelina33520@yandex.ru'
 recipient_email = 'angelina33520@yandex.ru'
@@ -41,6 +41,6 @@ letter = letter.replace('%my_name%', my_name)
 letter = letter.encode("UTF-8")
 
 server = smtplib.SMTP_SSL('smtp.yandex.ru', 465)
-server.login(MY_LOGIN_YANDEX, MY_PASSWORD_YANDEX)
+server.login(my_login_yandex, my_password_yandex)
 server.sendmail(sender_email, recipient_email, letter)
 server.quit()
